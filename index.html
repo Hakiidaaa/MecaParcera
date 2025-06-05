@@ -149,17 +149,21 @@
       box-shadow: 0 0 8px #00e1ff;
     }
 
-    #parceriasLista {
-      display: none;
-      padding: 20px;
-      max-width: 600px;
-      margin: 20px auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      color: #00e1ff;
-      white-space: pre-wrap;
-      font-family: monospace;
-    }
+   #parceriasLista {
+  display: none;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  color: #fbff00;
+  font-family: monospace;
+  font-size: 1.2em;
+  line-height: 1.8em;        /* Espaçamento entre linhas */
+  white-space: pre-line;     /* Garante quebra de linha bonitinha */
+  text-align: center;          /* Alinha o texto à esquerda */
+}
+
   </style>
 </head>
 <body>
@@ -175,14 +179,14 @@
   </div>
 
   <div id="parceriasLista" style="display:none">
-    [INSTITUIÇÕES LEGAIS]
+   <b> <u></u>[INSTITUIÇÕES LEGAIS]<u></u>
 
 ! HP NORTE
 ! STF
 ! BOMBEIROS
 ! POLICIA FEDERAL
 
-[COMUNIDADES]
+<u></u>[COMUNIDADES]<u></u>
 
 - SUB-MUNDO         [ÁREA 01]
 - CROÁCIA           [ÁREA 04]
@@ -218,10 +222,10 @@
 - HAS               [ÁREA 51]
 - REDROSES          [ÁREA 52]
 
-[FAMILIAS]
+</u>[FAMILIAS]</u>
 
 FAMILIA CORLEONE
-FAMILIA PETROVA
+FAMILIA PETROVA</b>
   </div>
 
   <div id="comunidade" class="tabela"></div>
