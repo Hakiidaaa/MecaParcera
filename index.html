@@ -49,6 +49,25 @@
       transform: scale(1.05);
     }
 
+    .toggle-btn {
+      margin-top: 10px;
+      padding: 14px 36px;
+      font-size: 1.05em;
+      background: linear-gradient(145deg, #00e1ff, #0085a1);
+      border: none;
+      color: #0c0f2d;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: linear-gradient(145deg, #0085a1, #00e1ff);
+      transform: scale(1.05);
+    }
+
     .tabela {
       display: none;
       margin: 20px auto;
@@ -130,43 +149,79 @@
       box-shadow: 0 0 8px #00e1ff;
     }
 
-    @media (max-width: 768px) {
-      header {
-        font-size: 2em;
-        padding: 30px 15px 20px;
-      }
-
-      .buttons button, .acoes button {
-        width: 100%;
-        font-size: 1em;
-      }
-
-      .tabela {
-        width: 95%;
-        padding: 20px;
-      }
-
-      .item label {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-      }
-
-
-      .acoes {
-        gap: 12px;
-      }
+    #parceriasLista {
+      display: none;
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      color: #00e1ff;
+      white-space: pre-wrap;
+      font-family: monospace;
     }
-
   </style>
 </head>
 <body>
-
   <header>NO WAY VALORES</header>
 
   <div class="buttons">
     <button onclick="mostrarTabela('comunidade')">Valores Comunidade</button>
     <button onclick="mostrarTabela('parceria')">Valores Parceria</button>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="toggle-btn" onclick="toggleParcerias()">PARCEIRIAS</button>
+  </div>
+
+  <div id="parceriasLista" style="display:none">
+    [INSTITUIÇÕES LEGAIS]
+
+! HP NORTE
+! STF
+! BOMBEIROS
+! POLICIA FEDERAL
+
+[COMUNIDADES]
+
+- SUB-MUNDO         [ÁREA 01] FARMÁCIA É PINTURA
+- CROÁCIA           [ÁREA 04] BALINHA E PINTURA
+- SINTONIA          [ÁREA 05] LOJA DE AIRSOFT
+- TROPA DA LALA     [ÁREA 06] LOJA DE AIRSOFT
+- GHOSTS            [ÁREA 08] LOJA DE AIRSOFT
+- PENHA             [ÁREA 09] FARMÁCIA
+- TROPA DUSE7E      [ÁREA 10] LOJA DE AIRSOFT
+- BAHAMAS           [ÁREA 13] MUAMBA
+- TOP SECRET        [ÁREA 15] LAVAGEM
+- PORTUGAL          [ÁREA 17] FARMÁCIA É PINTURA
+- MAGNATAS          [ÁREA 19] LAVANDERIA
+- SILENT            [ÁREA 22] BALA FINI
+- BECKS CENTRAL     [ÁREA 24] FARMÁCIA É PINTURA
+- COLOMBIA          [ÁREA 25] FARMÁCIA É PINTURA
+- ELITE             [ÁREA 28] LOJA DE AIRSOFT
+- TROPA DO PORTO    [ÁREA 27] FARMÁCIA É PINTURA
+- ITÁLIA            [ÁREA 29] BALINHA E PINTURA
+- MÉXICO            [ÁREA 30] MUAMBA
+- TROPA DO URSO     [ÁREA 31] LOJA DE IMPORTADOS
+- FÚRIA DA MARCONE  [ÁREA 33] FARMÁCIA É PINTURA
+- BROOKLYN          [ÁREA 36] BALINHA E PINTURA
+- METRALHAS         [ÁREA 37] BALA FINI E PINTURA
+- AGIOTAS           [ÁREA 39] BALINHA E PINTURA
+- SEM MÍDIA         [ÁREA 40] BALINHA E PINTURA
+- IMPERIAL          [ÁREA 42]
+- MILICIA           [ÁREA 43] LOJA DE IMPORTADOS
+- TURQUIA           [ÁREA 44] LOJA DE AIRSOFT
+- DIAMOND           [ÁREA 45] LOJA DE AIRSOFT
+- TRIADE            [ÁREA 48] LOJA DE IMPORTADOS
+- ELEMENTS          [ÁREA 49] LOJA DE AIRSOFT
+- OS BALLAS         [ÁREA 50] LOJA DE AIRSOFT
+- HAS               [ÁREA 51] LOJA DE AIRSOFT
+- REDROSES          [ÁREA 52] FARMÁCIA É PINTURA
+
+[FAMILIAS]
+
+FAMILIA CORLEONE
+FAMILIA PETROVA
   </div>
 
   <div id="comunidade" class="tabela"></div>
@@ -180,7 +235,7 @@
   <div id="resultado"></div>
 
   <script>
-    const dados = {
+    const precos = {
       comunidade: {
         "PEÇAS TUNING": {
           "Full Tuning": 590000,
@@ -210,7 +265,7 @@
           "Grelha": 45000,
           "Extras": 50000,
           "Extras 2": 50000,
-          "Extras 3": 50000, 
+          "Extras 3": 50000,
           "Extras 4": 50000,
           "Extras 5": 50000,
           "Extras 6": 50000,
@@ -269,9 +324,8 @@
           "Buzina": 10000,
           "Grelha": 40000,
           "Extras": 50000,
-          "Extras": 50000,
           "Extras 2": 50000,
-          "Extras 3": 50000, 
+          "Extras 3": 50000,
           "Extras 4": 50000,
           "Extras 5": 50000,
           "Extras 6": 50000,
@@ -305,67 +359,63 @@
       }
     };
 
+    function toggleParcerias() {
+      const lista = document.getElementById('parceriasLista');
+      lista.style.display = lista.style.display === 'none' ? 'block' : 'none';
+    }
+
     function mostrarTabela(tipo) {
-      document.getElementById('comunidade').style.display = 'none';
-      document.getElementById('parceria').style.display = 'none';
+      const container = document.getElementById(tipo);
+      container.innerHTML = '';
+      for (const categoria in precos[tipo]) {
+        const divCategoria = document.createElement('div');
+        divCategoria.className = 'categoria';
 
-      const tabela = document.getElementById(tipo);
-      tabela.innerHTML = '';
+        const titulo = document.createElement('h2');
+        titulo.textContent = categoria;
+        divCategoria.appendChild(titulo);
 
-      for (const categoria in dados[tipo]) {
-        const divCat = document.createElement('div');
-        divCat.classList.add('categoria');
-        divCat.innerHTML = `<h2>${categoria}</h2>`;
+        for (const item in precos[tipo][categoria]) {
+          const valor = precos[tipo][categoria][item];
 
-        for (const item in dados[tipo][categoria]) {
           const divItem = document.createElement('div');
-          divItem.classList.add('item');
-          const id = `${tipo}-${item.replace(/\s+/g, '-')}`;
-          const valor = dados[tipo][categoria][item];
-          divItem.innerHTML = `<label><input type="checkbox" value="${valor}" id="${id}">${item} – R$ ${valor.toLocaleString()}</label>`;
+          divItem.className = 'item';
 
-          const input = divItem.querySelector('input');
-          input.addEventListener('change', function () {
-            if (this.checked) {
-              divItem.classList.add('selecionado');
-            } else {
-              divItem.classList.remove('selecionado');
-            }
-          });
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'checkbox';
+          input.value = valor;
 
-          divCat.appendChild(divItem);
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(' ' + item));
+          divItem.appendChild(label);
+
+          const preco = document.createElement('span');
+          preco.textContent = 'R$' + valor.toLocaleString('pt-BR');
+          divItem.appendChild(preco);
+
+          divCategoria.appendChild(divItem);
         }
-
-        tabela.appendChild(divCat);
+        container.appendChild(divCategoria);
       }
 
-      tabela.style.display = 'block';
+      document.getElementById('comunidade').style.display = tipo === 'comunidade' ? 'block' : 'none';
+      document.getElementById('parceria').style.display = tipo === 'parceria' ? 'block' : 'none';
       document.getElementById('botoesAcoes').style.display = 'flex';
-      document.getElementById('resultado').innerText = '';
     }
 
     function calcularTotal() {
-      let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
       let total = 0;
-      let selecionados = [];
-
-      checkboxes.forEach(cb => {
-        total += parseInt(cb.value);
-        selecionados.push(cb.parentNode.textContent.trim());
+      document.querySelectorAll('.tabela input:checked').forEach(input => {
+        total += parseInt(input.value);
       });
-
-      let res = `<strong>Itens selecionados:</strong><br>${selecionados.join('<br>')}<br><br><strong>Total:</strong> R$ ${total.toLocaleString()}`;
-      document.getElementById('resultado').innerHTML = res;
+      document.getElementById('resultado').textContent = 'Total: R$' + total.toLocaleString('pt-BR');
     }
 
     function reiniciar() {
-      document.querySelectorAll('input[type=checkbox]').forEach(cb => {
-        cb.checked = false;
-        cb.closest('.item').classList.remove('selecionado');
-      });
-      document.getElementById('resultado').innerText = '';
+      document.querySelectorAll('.tabela input').forEach(input => input.checked = false);
+      document.getElementById('resultado').textContent = '';
     }
   </script>
-
 </body>
 </html>
