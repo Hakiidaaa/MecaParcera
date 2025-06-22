@@ -149,21 +149,72 @@
       box-shadow: 0 0 8px #00e1ff;
     }
 
-   #parceriasLista {
-  display: none;
-  padding: 30px;
-  max-width: 1000px;
-  margin: 30px auto;
-  background-color: rgba(0, 0, 0, 0.897);
-  border-radius: 12px;
-  color: #fbff00;
-  font-family: monospace;
-  font-size: 1.2em;
-  line-height: 1.8em;        /* Espaçamento entre linhas */
-  white-space: pre-line;     /* Garante quebra de linha bonitinha */
-  text-align: start;          /* Alinha o texto à esquerda */
-}
+    #parceriasLista {
+      display: none;
+      padding: 30px;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: rgba(0, 0, 0, 0.897);
+      border-radius: 12px;
+      color: #fbff00;
+      font-family: monospace;
+      font-size: 1.2em;
+      line-height: 1.8em;
+      white-space: pre-line;
+      text-align: start;
+    }
 
+    #rgbParceriasLista {
+      display: none;
+      margin: 20px auto;
+      max-width: 1000px;
+      text-align: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      display: flex;
+    }
+
+    #rgbParceriasLista button {
+      padding: 10px 20px;
+      margin: 4px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(145deg, #ff0055, #aa0033);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(170, 0, 51, 0.7);
+      transition: background 0.3s ease;
+      font-size: 1em;
+      user-select: none;
+    }
+
+    #rgbParceriasLista button:hover {
+      background: linear-gradient(145deg, #aa0033, #ff0055);
+    }
+
+    #mensagem {
+      margin: 20px auto;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.897);
+      color: #d9ff00;
+      white-space: pre-line;
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #d9ff00;
+      min-height: 100px;
+    }
+
+    #imagemParceria {
+      display: none;
+      margin: 20px auto;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00e1ff;
+    }
   </style>
 </head>
 <body>
@@ -176,10 +227,17 @@
 
   <div style="text-align: center;">
     <button class="toggle-btn" onclick="toggleParcerias()">PARCEIRIAS</button>
+    <button class="toggle-btn" onclick="toggleRGBParcerias()">RGB PARCERIAS</button>
   </div>
 
+  <div id="rgbParceriasLista"></div>
+
+  <img id="imagemParceria" src="" alt="Imagem da Parceria">
+
+  <div id="mensagem"></div>
+
   <div id="parceriasLista" style="display:none">
-   <b> <u></u>[INSTITUIÇÕES LEGAIS]<u></u>
+    <b> <u></u>[INSTITUIÇÕES LEGAIS]<u></u>
 
 ! HP NORTE
 ! STF
@@ -188,44 +246,45 @@
 
 <u></u>[COMUNIDADES]<u></u>
 
-- SUB-MUNDO         [ÁREA 01] FARMÁCIA É PINTURA  |
-- CROÁCIA           [ÁREA 04] BALINHA E PINTURA   |
-- SINTONIA          [ÁREA 05] LOJA DE AIRSOFT     |
-- TROPA DA LALA     [ÁREA 06] LOJA DE AIRSOFT     |
-- GHOSTS            [ÁREA 08] LOJA DE AIRSOFT     |
-- PENHA             [ÁREA 09] FARMÁCIA            |
-- TROPA DUSE7E      [ÁREA 10] LOJA DE AIRSOFT     |
-- ABSOLUTT          [ÁREA 11] BALINHA E PINTURA   |
-- BAHAMAS           [ÁREA 13] MUAMBA              |
-- TOP SECRET        [ÁREA 15] LAVAGEM             |
-- PORTUGAL          [ÁREA 17] FARMÁCIA É PINTURA  |
-- MAGNATAS          [ÁREA 19] LAVANDERIA          |
-- VORTEX            [ÁREA 21] BALA FINI           |
-- SILENT            [ÁREA 22] BALA FINI           |
-- BECKS CENTRAL     [ÁREA 24] FARMÁCIA É PINTURA  |
-- COLOMBIA          [ÁREA 25] FARMÁCIA É PINTURA  |
-- ELITE             [ÁREA 28] LOJA DE AIRSOFT     |
-- TROPA DO PORTO    [ÁREA 27] FARMÁCIA É PINTURA  |
-- ITÁLIA            [ÁREA 29] BALINHA E PINTURA   |
-- MÉXICO            [ÁREA 30] MUAMBA              |
-- TROPA DO URSO     [ÁREA 31] LOJA DE IMPORTADOS  |
-- FÚRIA DA MARCONE  [ÁREA 33] FARMÁCIA É PINTURA  |
-- TDA               [ÁREA 34] FARMÁCIA É PINTURA  |
-- BROOKLYN          [ÁREA 36] BALINHA E PINTURA   |
-- METRALHAS         [ÁREA 37] BALA FINI E PINTURA |
-- AGIOTAS           [ÁREA 39] BALINHA E PINTURA   |
-- SEM MÍDIA         [ÁREA 40] BALINHA E PINTURA   |
-- IMPERIAL          [ÁREA 42]                     |
-- MILICIA           [ÁREA 43] LOJA DE IMPORTADOS  |
-- TURQUIA           [ÁREA 44] LOJA DE AIRSOFT     |
-- DIAMOND           [ÁREA 45] LOJA DE AIRSOFT     |
-- TRIADE            [ÁREA 48] LOJA DE IMPORTADOS  |
-- ELEMENTS          [ÁREA 49] LOJA DE AIRSOFT     |
-- OS BALLAS         [ÁREA 50] LOJA DE AIRSOFT     |
-- HAS               [ÁREA 51] LOJA DE AIRSOFT     |
-- REDROSES          [ÁREA 52] FARMÁCIA É PINTURA  |
-- UMBRELLA          [ÁREA 55] BALINHA E PINTURA   |
-- TROPA DA ESPANHA  [ÁREA 56] FARMÁCIA É PINTURA  |
+- SUB-MUNDO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 01] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- CROÁCIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 04] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- SINTONIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 05] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TROPA DA LALA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 06] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- GHOSTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 08] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- PENHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 09] FARMÁCIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TROPA DUSE7E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 10] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- ABSOLUTT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 11] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- BAHAMAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 13] MUAMBA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TOP SECRET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 15] LAVAGEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- PORTUGAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 17] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- DUBAI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 19] LAVANDERIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- VORTEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 21] BALA FINI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- SILENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 22] BALA FINI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- BECKS CENTRAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 24] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- COLOMBIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 25] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- ELITE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 28] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TROPA DO PORTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 27] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- ITÁLIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 29] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- MÉXICO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 30] MUAMBA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TROPA DO URSO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 31] LOJA DE IMPORTADOS&nbsp;&nbsp;|
+- FÚRIA DA MARCONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 33] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- TDA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 34] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- BROOKLYN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 36] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- METRALHAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 37] BALA FINI E PINTURA&nbsp;|
+- AGIOTAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 39] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- SEM MÍDIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 40] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- IMPERIAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 42]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- MILICIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 43] LOJA DE IMPORTADOS&nbsp;&nbsp;|
+- TURQUIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 44] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- DIAMOND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 45] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- TRIADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 48] LOJA DE IMPORTADOS&nbsp;&nbsp;|
+- ELEMENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 49] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- OS BALLAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 50] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- HAS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 51] LOJA DE AIRSOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+- REDROSES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 52] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+- UMBRELLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 55] BALINHA E PINTURA&nbsp;&nbsp;&nbsp;|
+- TROPA DA ESPANHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ÁREA 56] FARMÁCIA É PINTURA&nbsp;&nbsp;|
+
 
 </u>[FAMILIAS]</u>
 
@@ -233,7 +292,7 @@ FAMILIA CORLEONE
 FAMILIA PETROVA</b>
   </div>
 
-  <div id="comunidade" class="tabela"></div>
+<div id="comunidade" class="tabela"></div>
   <div id="parceria" class="tabela"></div>
 
   <div class="acoes" id="botoesAcoes" style="display:none;">
@@ -367,10 +426,154 @@ FAMILIA PETROVA</b>
         }
       }
     };
+    
+    const rgbParcerias = [
+    "DIAMOND", "CHINA", "LACOSTE", "GHOSTS", "COLOMBIA", 
+    "CRIPS", "ANONYMOUS", "TALIBÃ", "MÉXICO", "FAMÍLIA PETROVA", 
+    "TROPA DO 7", "OS BALLAS", "COLOMBIA", "ITÁLIA", "LOS BLANCOS", 
+    "BAHAMAS", "BECKS CENTRAL", "PENHA (HELLO KIT)", "VORTEX (MEDELLIN)", "ESPANHA",
+    "ISRAEL"
+    ];
 
-    function toggleParcerias() {
-      const lista = document.getElementById('parceriasLista');
-      lista.style.display = lista.style.display === 'none' ? 'block' : 'none';
+    const mensagens = {
+        "DIAMOND": `PRIMÁRIA METÁLICA: 51, 216, 139
+SECUNDÁRIA METÁLICA: 51, 216, 139
+PEROLADO: 255, 255, 255`,
+
+    "CHINA": `PRIMÁRIA METÁLICA: 102, 1, 2
+SECUNDÁRIA METÁLICA: 102, 1, 2
+PEROLADO: 255, 46, 0`,
+
+"LACOSTE": `PRIMÁRIA METÁLICA: 0, 255, 0
+SECUNDÁRIA METÁLICA: 0, 255, 0
+PEROLADO: 241, 158, 8`,
+
+"GHOSTS": `PRIMÁRIA FOSCA: 7, 4, 61
+SECUNDÁRIA FOSCA: 7, 4, 61
+PEROLADO: 153, 10, 119`,
+
+"COLOMBIA": `PRIMÁRIA METÁLICA: 251, 255, 0
+SECUNDÁRIA METÁLICA: 130, 0, 0
+PEROLADO: 255, 255, 255`,
+
+"CRIPS": `PRIMÁRIA METÁLICA: 5, 16, 149
+SECUNDÁRIA METÁLICA: Escolha do cliente
+PEROLADO: 255, 255, 255`,
+
+"ANONYMOUS": `PRIMÁRIA METÁLICA: 5, 30, 131
+SECUNDÁRIA METÁLICA: Escolha do cliente
+PEROLADO: 46, 247, 255`,
+
+"TALIBÃ": `PRIMÁRIA METÁLICA: 2, 255, 255
+SECUNDÁRIA METÁLICA: 2, 255, 255
+PEROLADO: 255, 255, 255`,
+
+"MÉXICO": `PRIMÁRIA METÁLICA - 0,0,0
+SECUNDÁRIA - 0,0,0
+PEROLADO - 0,241,255`,
+
+"FAMÍLIA PETROVA": `**PRIMÁRIA - 83, 71, 111 (METÁLICO)
+SECUNDDÁRIA - 0, 0, 0 (METÁLICO)
+PEROLADO - 250, 250, 250
+
+XENON E NEON - BRANCO
+FUMAÇA - ESCOLHA PRÓPRIA**`,
+
+"BAHAMAS": `PRIMÁRIA - 112,102,86
+SECUNDÁRIA - 0,0,0
+PEROLADO - 255,0,0`,
+
+"TROPA DO 7": `PRINARIA 156, 240, 250
+SEGUNDARIA 0,0,0
+ PEROLADO BRANCO`,
+
+"OS BALLAS": `PRIMARIA 0, 204, 255
+SEGUNDARIA 0, 204, 255
+PEROLADO 0, 204, 255`,
+
+"COLOMBIA": `PRIMÁRIA E SECUNDÁRIA CROMADO - AZUL 17,0,255 
+NENON AMARELO
+FUMAÇA AMARELA
+XENON - 9 VERMELHO
+
+**Atenção quando for colocar o cromado azul, as vezes não pega cor primária, mas sim, pega na cor secunária!
+
+Só selecionar a opção cromado e a cor azul no mesmo instante**`,
+
+"ITÁLIA": `PRIMÁRIA FOSCO - 5,5,5
+SECUNDÁRIA FOSCO - 5,5,5
+PEROLADO - 255,0,0`,
+
+"LOS BLANCOS": `PRIMÁRIA METÁLICA - 167, 186, 164
+SECUNDÁRIA METÁLICA - 167, 186, 164
+PEROLADO - 35, 255, 0`,
+
+"BECKS CENTRAL": `PRIMÁRIA METÁLICA: 27,0,39
+SECUNDÁRIA METÁLICA : 0,0,0
+PEROLADO: 255,0,0`,
+
+"PENHA (HELLO KIT)" : `PRIMÁRIA METÁLICA: 255,80,166
+SECUNDÁRIA METÁLICA : 255,80,166
+PEROLADO: 255,255,255`,
+
+"VORTEX (MEDELLIN)": `PRIMÁRIA METÁLICA: 2, 78, 146
+SECUNDÁRIA METÁLICA: 2, 78, 146
+PEROLADO: 255,255,255`,
+
+"ESPANHA": `PRIMÁRIA METÁLICA : 191, 78, 0
+SECUNDÁRIA METÁLICA: 255, 255, 255
+PEROLADO: 255, 255, 255
+NEON: BRANCO
+FAROL: LARANJA - 8 
+FUMAÇA: LARANJA `,
+
+"ISRAEL": ` PRIMARIA METALICA: 1, 0, 31  
+SEGUNDARIA METALICO: 1, 0, 31 
+PEROLADO BRANCO: 255, 255, 255 
+NEON BRANCO
+XENON  2 - AZUL
+FUMAÇA AZUL`,
+  };
+
+    const imagens = {
+      "DIAMOND": "https://cdn.discordapp.com/attachments/1290514059208298600/1309739849242116196/image.png?ex=6858da49&is=685788c9&hm=2dc83ef4fae8b378e9e38e536b8c16434d3f4adc1d6c3128f46f5928dfc58208&",
+      "CHINA": "https://cdn.discordapp.com/attachments/1290514059208298600/1309740782454050968/image.png?ex=6858db28&is=685789a8&hm=b7b9268f0896b7f215e424c40d1999475fa82944e25baad0723cd451a5015c98&",
+      "LACOSTE": "https://cdn.discordapp.com/attachments/1290514059208298600/1309742092574134292/image.png?ex=6858dc60&is=68578ae0&hm=cd77ccfea4536877c4f064bdd90d9fa1610408a021f2adef1937bb67b7d91afe&",
+      "GHOSTS": "https://cdn.discordapp.com/attachments/1290514059208298600/1309743196573794404/image.png?ex=6858dd67&is=68578be7&hm=1925b83ea68b47e0dc65c7aadb7212129e7220476c3c228f2c3c3e1a1ad0b8f2&",
+      "COLOMBIA": "https://cdn.discordapp.com/attachments/1290514059208298600/1309744426452783164/image.png?ex=6858de8d&is=68578d0d&hm=67ff445ae9de4bf87b57ad3cfaeb6109b521fca9692816c6081eac12ee305153&",
+      "CRIPS": "https://cdn.discordapp.com/attachments/1290514059208298600/1327133181601775717/image.png?ex=6858d917&is=68578797&hm=768b03639189af0ac9ce3828e2c6caa0ab5c21126c27244b3274578533f85e07&",
+      "ANONYMOUS": "https://cdn.discordapp.com/attachments/1290514059208298600/1327134412277678181/image.png?ex=6858da3c&is=685788bc&hm=f12ae7b155d6f64963cd9d92a24c4a09462a4fafcf86d44d45779c6c1ed80d4b&",
+      "TALIBÃ": "https://cdn.discordapp.com/attachments/1290514059208298600/1327901529356767254/image.png?ex=685901ab&is=6857b02b&hm=fbccd46f3ec20478d2c83a0c9ca5722a674696977c93a509d06449707a8b1e10&",
+      "MÉXICO": "https://cdn.discordapp.com/attachments/1290514059208298600/1361902739961020416/image.png?ex=68596f84&is=68581e04&hm=6b4fb62223db68c8c4f9d87c2f6ff618adc234af9b1fac9403e2a651611355c3&",
+      "FAMÍLIA PETROVA": "https://cdn.discordapp.com/attachments/1290514059208298600/1371999119559888997/image.png?ex=68594080&is=6857ef00&hm=0c238b711d580cd126d17cccf552df90bb122199288b13b2a1874ccd2498e211&",
+      "TROPA DO 7": "https://cdn.discordapp.com/attachments/1290514059208298600/1374045702031937556/enhanced_image_15.png?ex=68597247&is=685820c7&hm=72ec1f5becb6fda020d1f6378560b80472c0ab15bda9e7c1e01c4476d9d2c8e8&",
+      "OS BALLAS": "https://cdn.discordapp.com/attachments/1290514059208298600/1377815748810113066/image.png?ex=685951a9&is=68580029&hm=cdc7dadf73e42c8f95b5e87c2c16fd70308d8d1c0b6e702983386a8ab1026bef&",
+      "COLOMBIA": "https://cdn.discordapp.com/attachments/1290514059208298600/1382075576138989678/enhanced_image_20.png?ex=6858feef&is=6857ad6f&hm=6950e076863996d3c9726113fb892fa585082f4ec612bc7e1f15614f1ddfe4e5&",
+      "ITÁLIA": "https://cdn.discordapp.com/attachments/1290514059208298600/1382079212416008293/enhanced_image_21.png?ex=68590252&is=6857b0d2&hm=dc90a1a0168c36ef7fca5a9745c83a989d7af57bc5f9c614922803ef397ea601&",
+      "LOS BLANCOS": "https://cdn.discordapp.com/attachments/1290514059208298600/1382082579200475208/enhanced_image_23.png?ex=68590574&is=6857b3f4&hm=c4b80dc1a206105d51be161bab00cfb007e236445e2032cd9fd0f066339d2720&",
+      "BAHAMAS": "https://cdn.discordapp.com/attachments/1290514059208298600/1372579140129128488/enhanced_image_12.png?ex=68596270&is=685810f0&hm=05132cbc6338fefde33c1e052bb419d0da01fe0546cdf44ed0c8e866f1888a65&",
+      "BECKS CENTRAL": "https://cdn.discordapp.com/attachments/1290514059208298600/1382085650844745858/image.png?ex=68590851&is=6857b6d1&hm=209f6e15a936401086e7d171519176633c044872d9b208abd1d64b181e6c68ef&",
+      "PENHA (HELLO KIT)": "https://cdn.discordapp.com/attachments/1290514059208298600/1382087684092334091/enhanced_image_25.png?ex=68590a35&is=6857b8b5&hm=8bf1e46618c3d47fb55dd19a71a119734633a617e76450302ab4bfdf877c255e&",
+      "VORTEX (MEDELLIN)": "https://cdn.discordapp.com/attachments/1290514059208298600/1384673877631963197/image.png?ex=6859384a&is=6857e6ca&hm=1fde84219ea5dba6f7431945a76b7cef0183a99930647ddd123fb79c4054f1fa&",
+      "ESPANHA": "https://cdn.discordapp.com/attachments/1290514059208298600/1386026425458491422/image.png?ex=6858ddf2&is=68578c72&hm=1c3aa0e868a1f3a9b1cf92d4f2d7f26bf38c91cc7260b0a21e707cd781a78fa3&",
+      "ISRAEL": "https://cdn.discordapp.com/attachments/1290514059208298600/1386035092568408075/image.png?ex=6858e605&is=68579485&hm=517129ede3d75279e2fa29a26a31b36e31011c52e85e5331b2a5250d06fe404b&"
+    };
+
+    function mostrarTabela(nome) {
+      // Esconde todas as tabelas
+      document.querySelectorAll('.tabela').forEach(div => div.style.display = 'none');
+      // Exibe a tabela solicitada
+      const tabela = document.getElementById(nome);
+      if (tabela) {
+        tabela.style.display = 'block';
+      }
+      // Limpa resultado e mensagem
+      document.getElementById('resultado').textContent = '';
+      document.getElementById('mensagem').textContent = '';
+      document.getElementById('imagemParceria').style.display = 'none';
+      // Esconde listas parcerias e rgb
+      document.getElementById('parceriasLista').style.display = 'none';
+      document.getElementById('rgbParceriasLista').style.display = 'none';
     }
 
     function mostrarTabela(tipo) {
@@ -433,7 +636,65 @@ FAMILIA PETROVA</b>
         cb.closest('.item').classList.remove('selecionado');
       });
       document.getElementById('resultado').innerText = '';
+      
     }
+
+    function toggleParcerias() {
+      const parcerias = document.getElementById('parceriasLista');
+      if (parcerias.style.display === 'block') {
+        parcerias.style.display = 'none';
+      } else {
+        parcerias.style.display = 'block';
+      }
+      // Esconde rgb parcerias, resultado, imagem e mensagem
+      document.getElementById('rgbParceriasLista').style.display = 'none';
+      document.getElementById('resultado').textContent = '';
+      document.getElementById('mensagem').textContent = '';
+      document.getElementById('imagemParceria').style.display = 'none';
+    }
+
+    function toggleRGBParcerias() {
+      const rgbLista = document.getElementById('rgbParceriasLista');
+      if (rgbLista.style.display === 'flex') {
+        rgbLista.style.display = 'none';
+        document.getElementById('mensagem').textContent = '';
+        document.getElementById('imagemParceria').style.display = 'none';
+      } else {
+        rgbLista.style.display = 'flex';
+        gerarBotoesRGB();
+        document.getElementById('mensagem').textContent = '';
+        document.getElementById('imagemParceria').style.display = 'none';
+      }
+      // Esconde outras seções
+      document.getElementById('parceriasLista').style.display = 'none';
+      document.getElementById('resultado').textContent = '';
+    }
+
+    function gerarBotoesRGB() {
+      const container = document.getElementById('rgbParceriasLista');
+      container.innerHTML = ''; // limpa
+      rgbParcerias.forEach((nome, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = `${index + 1} - ${nome}`;
+        btn.onclick = () => mostrarMensagemRGB(nome);
+        container.appendChild(btn);
+      });
+    }
+
+    function mostrarMensagemRGB(nome) {
+      const mensagem = mensagens[nome] || 'Informação não disponível.';
+      const mensagemEl = document.getElementById('mensagem');
+      mensagemEl.textContent = mensagem;
+
+      const imagemEl = document.getElementById('imagemParceria');
+      if (imagens[nome]) {
+        imagemEl.src = imagens[nome];
+        imagemEl.style.display = 'block';
+      } else {
+        imagemEl.style.display = 'none';
+      }
+    }
+
   </script>
 </body>
 </html>
